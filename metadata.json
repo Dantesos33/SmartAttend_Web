@@ -1,0 +1,6 @@
+{
+  "name": "SmartAttend",
+  "description": "Smarter attendance. Simpler classrooms. Modern mobile app showcase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

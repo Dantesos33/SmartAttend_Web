@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#EEF7ED] border border-[#98CE94]/30">
-              <SmartAttendLogo size={18} showBackground={false} />
+              <SmartAttendLogo size={18} variant="dark" />
               <span className="text-xs font-extrabold uppercase tracking-wider text-[#4E8E4A]">
                 SmartAttend · Smart Attendance System
               </span>

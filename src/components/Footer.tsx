@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
           {/* Brand Column */}
           <div className="md:col-span-6 space-y-4">
             <div className="flex items-center gap-3">
-              <SmartAttendLogo size={42} showBackground={true} />
+              <SmartAttendLogo size={42} variant="light" />
               <div>
                 <h3 className="text-xl font-extrabold tracking-tight text-white">SmartAttend</h3>
                 <span className="text-[10px] text-[#98CE94] font-mono tracking-wider">v1.0.4 PROD</span>

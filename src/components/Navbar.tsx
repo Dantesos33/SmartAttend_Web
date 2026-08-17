@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <SmartAttendLogo size={36} showBackground={true} />
+            <SmartAttendLogo size={36} variant="dark" />
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-xl tracking-tight text-[#363543] group-hover:text-[#4E8E4A] transition-colors">
                 SmartAttend

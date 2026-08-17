@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { QrCode, Download, BookOpen, Smartphone, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { ModalType } from '../types';
 import { SmartAttendLogo } from './SmartAttendLogo';
+import qrCode from '../../assets/qrcode.png';
 
 interface DownloadSectionProps {
   onOpenModal: (modal: ModalType) => void;
@@ -68,34 +69,12 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
             {/* QR Code Container */}
             <div className="my-2">
               <div className="w-36 h-36 border-2 border-dashed border-[#98CE94] bg-[#EEF7ED] rounded-2xl p-3 flex flex-col items-center justify-center relative group">
-                {/* Simulated QR Pattern SVG */}
-                <svg className="w-28 h-28 text-[#363543]" viewBox="0 0 100 100" fill="currentColor">
-                  {/* Outer Frame Corners */}
-                  <rect x="5" y="5" width="25" height="25" fill="#363543" />
-                  <rect x="10" y="10" width="15" height="15" fill="#FFFFFF" />
-                  <rect x="13" y="13" width="9" height="9" fill="#98CE94" />
-
-                  <rect x="70" y="5" width="25" height="25" fill="#363543" />
-                  <rect x="75" y="10" width="15" height="15" fill="#FFFFFF" />
-                  <rect x="78" y="13" width="9" height="9" fill="#98CE94" />
-
-                  <rect x="5" y="70" width="25" height="25" fill="#363543" />
-                  <rect x="10" y="75" width="15" height="15" fill="#FFFFFF" />
-                  <rect x="13" y="78" width="9" height="9" fill="#98CE94" />
-
-                  {/* QR Dots */}
-                  <rect x="35" y="10" width="8" height="8" />
-                  <rect x="48" y="10" width="12" height="8" />
-                  <rect x="35" y="25" width="25" height="8" />
-                  <rect x="10" y="38" width="15" height="8" />
-                  <rect x="30" y="38" width="8" height="20" />
-                  <rect x="45" y="42" width="15" height="15" fill="#98CE94" />
-                  <rect x="68" y="38" width="22" height="8" />
-                  <rect x="70" y="52" width="10" height="10" />
-                  <rect x="35" y="70" width="12" height="20" />
-                  <rect x="52" y="70" width="18" height="8" />
-                  <rect x="75" y="75" width="15" height="15" fill="#363543" />
-                </svg>
+                <img
+                  src={qrCode}
+                  alt="Scan to download SmartAttend"
+                  className="w-28 h-28 object-contain"
+                  draggable={false}
+                />
 
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-xs rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-2 text-center">
                   <span className="text-[10px] font-bold text-white">Direct APK Scan URL Linked</span>
@@ -116,7 +95,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
           <div className="bg-white border border-[#E5E7EB] rounded-2xl p-8 shadow-xs text-center flex flex-col items-center justify-between hover:shadow-md transition-all">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-[#EEF7ED] flex items-center justify-center mx-auto mb-4 border border-[#98CE94]/30 shadow-2xs">
-                <SmartAttendLogo size={40} showBackground={false} />
+                <SmartAttendLogo size={40} variant="dark" />
               </div>
               <h3 className="text-xl font-bold text-[#363543]">Download for Android</h3>
               <p className="text-xs text-[#73737C] mt-2 mb-6 leading-relaxed">

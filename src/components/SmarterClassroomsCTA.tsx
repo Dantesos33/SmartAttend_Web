@@ -44,7 +44,7 @@ export const SmarterClassroomsCTA: React.FC = () => {
                 {/* Mint Glow backplate */}
                 <div className="absolute -inset-4 bg-[#98CE94]/30 rounded-3xl blur-xl group-hover:bg-[#98CE94]/50 transition-all duration-500" />
                 <div className="relative bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-[36px] shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                  <SmartAttendLogo size={140} showBackground={true} />
+                  <SmartAttendLogo size={140} variant="light" />
                 </div>
               </div>
             </div>

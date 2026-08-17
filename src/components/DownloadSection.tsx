@@ -95,7 +95,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
           <div className="bg-white border border-[#E5E7EB] rounded-2xl p-8 shadow-xs text-center flex flex-col items-center justify-between hover:shadow-md transition-all">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-[#EEF7ED] flex items-center justify-center mx-auto mb-4 border border-[#98CE94]/30 shadow-2xs">
-                <SmartAttendLogo size={40} variant="dark" />
+                <SmartAttendLogo size={40} variant="light" />
               </div>
               <h3 className="text-xl font-bold text-[#363543]">Download for Android</h3>
               <p className="text-xs text-[#73737C] mt-2 mb-6 leading-relaxed">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { QrCode, Download, BookOpen, Smartphone, Check, Sparkles, ExternalLink } from 'lucide-react';
+import { QrCode, Download, BookOpen, Smartphone, Check, Sparkles, ExternalLink, FileText } from 'lucide-react';
 import { ModalType } from '../types';
 import { SmartAttendLogo } from './SmartAttendLogo';
 import qrCode from '../../assets/qrcode.png';
@@ -9,29 +9,37 @@ interface DownloadSectionProps {
 }
 
 export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal }) => {
+  // Google Drive URLs for APK and User Manual
+  const GOOGLE_DRIVE_APK_URL = 'https://drive.google.com/file/d/1FJKVJHsauKD1Iit8AUhHqR_9O8I_TOpc/view?usp=sharing';
+  // Replace with your actual Google Drive link for the User Manual PDF
+  const GOOGLE_DRIVE_MANUAL_URL = 'https://drive.google.com/file/d/YOUR_MANUAL_FILE_ID/view?usp=sharing';
+
   const [downloading, setDownloading] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+  
+  const [downloadingManual, setDownloadingManual] = useState(false);
+  const [manualSuccess, setManualSuccess] = useState(false);
 
   const handleDownloadApk = () => {
     setDownloading(true);
     setDownloadSuccess(false);
 
-    // Simulate APK download
     setTimeout(() => {
       setDownloading(false);
       setDownloadSuccess(true);
+      window.open(GOOGLE_DRIVE_APK_URL, '_blank', 'noopener,noreferrer');
+    }, 800);
+  };
 
-      // Trigger dummy download file
-      const element = document.createElement('a');
-      const file = new Blob(['SmartAttend APK Installation Package Demo - SMI University FYP Project'], {
-        type: 'text/plain',
-      });
-      element.href = URL.createObjectURL(file);
-      element.download = 'SmartAttend-v2.1-release.apk';
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-    }, 1200);
+  const handleDownloadManual = () => {
+    setDownloadingManual(true);
+    setManualSuccess(false);
+
+    setTimeout(() => {
+      setDownloadingManual(false);
+      setManualSuccess(true);
+      window.open(GOOGLE_DRIVE_MANUAL_URL, '_blank', 'noopener,noreferrer');
+    }, 800);
   };
 
   return (
@@ -47,7 +55,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
             Get SmartAttend
           </h2>
           <p className="mt-3 text-base sm:text-lg text-[#73737C] leading-relaxed">
-            Download the SmartAttend Android application and experience a simpler way to manage classroom attendance.
+            Download the SmartAttend Android application and official user documentation to experience a simpler way to manage classroom attendance.
           </p>
         </div>
 
@@ -87,7 +95,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
 
             <div className="w-full pt-4 border-t border-[#E5E7EB] text-xs font-bold text-[#4E8E4A] flex items-center justify-center gap-1">
               <Sparkles className="w-3.5 h-3.5 text-[#98CE94]" />
-              <span>Version 2.1 • Android 8.0+</span>
+              <span>Version 3.0 • Android & iOS</span>
             </div>
           </div>
 
@@ -107,9 +115,9 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
             <div className="w-full bg-[#F8F9F7] p-4 rounded-xl border border-[#E5E7EB] mb-6 space-y-1 text-left">
               <div className="flex justify-between text-xs font-bold text-[#363543]">
                 <span>SmartAttend.apk</span>
-                <span className="text-[#4E8E4A]">24.8 MB</span>
+                <span className="text-[#4E8E4A]">104 MB</span>
               </div>
-              <p className="text-[11px] text-[#73737C]">SHA256 Verified Build · SMI University</p>
+              <p className="text-[11px] text-[#73737C]">SHA256 Verified Build · Version 3.0</p>
             </div>
 
             {/* Action Download Button */}
@@ -126,17 +134,18 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
                 {downloading ? (
                   <>
                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                    <span>Preparing Download...</span>
+                    <span>Opening Google Drive...</span>
                   </>
                 ) : downloadSuccess ? (
                   <>
                     <Check className="w-4 h-4 text-[#4E8E4A]" />
-                    <span>APK Downloaded! Click to Re-download</span>
+                    <span>Opened in Drive! Click to Re-open</span>
                   </>
                 ) : (
                   <>
                     <Download className="w-4 h-4 text-[#98CE94]" />
-                    <span>Download APK (24.8 MB)</span>
+                    <span>Download from Drive (104 MB)</span>
+                    <ExternalLink className="w-3.5 h-3.5 ml-0.5 text-white/60" />
                   </>
                 )}
               </button>
@@ -152,27 +161,55 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
               <div className="w-10 h-10 rounded-xl bg-[#EEF7ED] text-[#4E8E4A] flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="w-5 h-5 text-[#4E8E4A]" />
               </div>
-              <h3 className="text-xl font-bold text-[#363543]">Need help getting started?</h3>
+              <h3 className="text-xl font-bold text-[#363543]">Official User Manual</h3>
               <p className="text-xs text-[#73737C] mt-2 mb-6 leading-relaxed">
-                Read the SmartAttend User Manual for installation instructions and guidance on using the application.
+                Access the complete Version 3.0 documentation for installation guidelines, face registration best practices, and role guides.
               </p>
             </div>
 
-            {/* Manual Highlight Snippet */}
-            <div className="w-full bg-[#F8F9F7] p-4 rounded-xl border border-[#E5E7EB] mb-6 text-left space-y-1.5 text-xs text-[#73737C]">
-              <p className="font-bold text-[#363543]">Included Instructions:</p>
-              <p className="text-[11px]">• APK Installation & permissions guide</p>
-              <p className="text-[11px]">• Face registration lighting best practices</p>
-              <p className="text-[11px]">• Teacher session activation & exports</p>
+            {/* Manual Info Box */}
+            <div className="w-full bg-[#F8F9F7] p-4 rounded-xl border border-[#E5E7EB] mb-6 space-y-1 text-left">
+              <div className="flex justify-between text-xs font-bold text-[#363543]">
+                <span>UserManual.pdf</span>
+                <span className="text-[#4E8E4A]">v3.0 Guide</span>
+              </div>
+              <p className="text-[11px] text-[#73737C]">Installation · Roles · Troubleshooting</p>
             </div>
 
-            <button
-              onClick={() => onOpenModal('manual')}
-              className="w-full py-3.5 px-4 bg-white hover:bg-gray-50 border border-[#E5E7EB] text-[#363543] font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-2xs hover:border-gray-400 transition-all cursor-pointer"
-            >
-              <BookOpen className="w-4 h-4 text-[#73737C]" />
-              <span>Read / Download User Manual</span>
-            </button>
+            {/* Manual Action Buttons Container */}
+            <div className="w-full space-y-2.5">
+              <button
+                onClick={handleDownloadManual}
+                disabled={downloadingManual}
+                className="w-full py-3 px-4 bg-[#363543] hover:bg-[#2A2935] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+              >
+                {downloadingManual ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                    <span>Opening Manual...</span>
+                  </>
+                ) : manualSuccess ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#98CE94]" />
+                    <span>Manual Opened in Drive!</span>
+                  </>
+                ) : (
+                  <>
+                    <FileText className="w-4 h-4 text-[#98CE94]" />
+                    <span>Download Manual (Drive)</span>
+                    <ExternalLink className="w-3.5 h-3.5 ml-0.5 text-white/60" />
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={() => onOpenModal('manual')}
+                className="w-full py-2.5 px-4 bg-white hover:bg-gray-50 border border-[#E5E7EB] text-[#363543] font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <BookOpen className="w-4 h-4 text-[#73737C]" />
+                <span>Preview In-App Modal</span>
+              </button>
+            </div>
           </div>
 
         </div>

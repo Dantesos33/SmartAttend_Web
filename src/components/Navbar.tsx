@@ -11,6 +11,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Constants for Google Drive integration
+  const GOOGLE_DRIVE_APK_URL = 'https://drive.google.com/file/d/1FJKVJHsauKD1Iit8AUhHqR_9O8I_TOpc/view?usp=sharing';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -46,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
                 SmartAttend
               </span>
               <span className="text-[10px] uppercase tracking-widest font-bold px-1.5 py-0.5 bg-[#EEF7ED] text-[#4E8E4A] rounded-full border border-[#98CE94]/30">
-                FYP
+                v3.0
               </span>
             </div>
           </a>
@@ -68,13 +71,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={() => onOpenModal('manual')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#363543] bg-white border border-[#E5E7EB] rounded-lg hover:bg-gray-50 transition-all cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#363543] bg-white border border-[#E5E7EB] rounded-lg hover:bg-gray-50 transition-all cursor-pointer shadow-2xl"
             >
               <BookOpen className="w-3.5 h-3.5 text-[#73737C]" />
-              User Manual
+              User Manual (v3.0)
             </button>
             <a
-              href="#download"
+              href={GOOGLE_DRIVE_APK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-[#363543] rounded-lg hover:bg-[#2A2935] hover:-translate-y-0.5 transition-all shadow-sm cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-[#98CE94]" />
@@ -118,10 +123,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#363543] bg-[#F8F9F7] border border-[#E5E7EB] rounded-lg"
             >
               <BookOpen className="w-4 h-4 text-[#73737C]" />
-              User Manual
+              User Manual (v3.0)
             </button>
             <a
-              href="#download"
+              href={GOOGLE_DRIVE_APK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-white bg-[#363543] rounded-lg text-center"
             >

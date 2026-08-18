@@ -1,8 +1,11 @@
 import React from 'react';
-import { Download, Smartphone, Sparkles } from 'lucide-react';
+import { Download, Smartphone, Sparkles, ExternalLink } from 'lucide-react';
 import { SmartAttendLogo } from './SmartAttendLogo';
 
 export const SmarterClassroomsCTA: React.FC = () => {
+  // Google Drive APK link integration
+  const GOOGLE_DRIVE_APK_URL = 'https://drive.google.com/file/d/1FJKVJHsauKD1Iit8AUhHqR_9O8I_TOpc/view?usp=sharing';
+
   return (
     <section className="py-12 bg-[#F8F9F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +21,7 @@ export const SmarterClassroomsCTA: React.FC = () => {
             <div className="lg:col-span-8 space-y-4">
               <span className="text-xs font-extrabold uppercase tracking-widest text-[#98CE94] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
-                SMARTER CLASSROOMS
+                SMARTER CLASSROOMS • VERSION 3.0
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 A smarter way to manage attendance.
@@ -29,11 +32,14 @@ export const SmarterClassroomsCTA: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <a
-                  href="#download"
+                  href={GOOGLE_DRIVE_APK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-bold text-[#183017] bg-[#98CE94] hover:bg-[#82BE7D] rounded-xl shadow-lg shadow-[#98CE94]/30 hover:-translate-y-0.5 transition-all cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-[#183017]" />
-                  Download SmartAttend
+                  Download SmartAttend (Drive)
+                  <ExternalLink className="w-3.5 h-3.5 ml-0.5 text-[#183017]/70" />
                 </a>
               </div>
             </div>

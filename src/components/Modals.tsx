@@ -147,7 +147,14 @@ export const Modals: React.FC<ModalsProps> = ({ activeModal, onClose }) => {
 
             <div className="pt-4 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
               <button
-                onClick={() => alert('SmartAttend User Manual PDF downloaded successfully!')}
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = 'assets/usermanual.pdf';
+                  link.download = 'usermanual.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#98CE94] text-[#183017] text-xs font-bold rounded-xl hover:bg-[#82BE7D] transition-all cursor-pointer shadow-sm"
               >
                 <Download className="w-4 h-4 text-[#183017]" />

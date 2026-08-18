@@ -41,6 +41,14 @@ export const SmarterClassroomsCTA: React.FC = () => {
                   Download SmartAttend (Drive)
                   <ExternalLink className="w-3.5 h-3.5 ml-0.5 text-[#183017]/70" />
                 </a>
+                <a
+                  href="assets/usermanual.pdf"
+                  download="usermanual.pdf"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-all cursor-pointer"
+                >
+                  <Download className="w-4 h-4 text-[#98CE94]" />
+                  User Manual PDF
+                </a>
               </div>
             </div>
 

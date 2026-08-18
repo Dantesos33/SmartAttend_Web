@@ -9,16 +9,11 @@ interface DownloadSectionProps {
 }
 
 export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal }) => {
-  // Google Drive URLs for APK and User Manual
+  // Google Drive URL for APK
   const GOOGLE_DRIVE_APK_URL = 'https://drive.google.com/file/d/1FJKVJHsauKD1Iit8AUhHqR_9O8I_TOpc/view?usp=sharing';
-  // Replace with your actual Google Drive link for the User Manual PDF
-  const GOOGLE_DRIVE_MANUAL_URL = 'https://drive.google.com/file/d/YOUR_MANUAL_FILE_ID/view?usp=sharing';
 
   const [downloading, setDownloading] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
-  
-  const [downloadingManual, setDownloadingManual] = useState(false);
-  const [manualSuccess, setManualSuccess] = useState(false);
 
   const handleDownloadApk = () => {
     setDownloading(true);
@@ -28,17 +23,6 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
       setDownloading(false);
       setDownloadSuccess(true);
       window.open(GOOGLE_DRIVE_APK_URL, '_blank', 'noopener,noreferrer');
-    }, 800);
-  };
-
-  const handleDownloadManual = () => {
-    setDownloadingManual(true);
-    setManualSuccess(false);
-
-    setTimeout(() => {
-      setDownloadingManual(false);
-      setManualSuccess(true);
-      window.open(GOOGLE_DRIVE_MANUAL_URL, '_blank', 'noopener,noreferrer');
     }, 800);
   };
 
@@ -178,29 +162,14 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({ onOpenModal })
 
             {/* Manual Action Buttons Container */}
             <div className="w-full space-y-2.5">
-              <button
-                onClick={handleDownloadManual}
-                disabled={downloadingManual}
-                className="w-full py-3 px-4 bg-[#363543] hover:bg-[#2A2935] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+              <a
+                href="assets/usermanual.pdf"
+                download="usermanual.pdf"
+                className="w-full py-3 px-4 bg-[#98CE94] hover:bg-[#82BE7D] text-[#183017] font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
               >
-                {downloadingManual ? (
-                  <>
-                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                    <span>Opening Manual...</span>
-                  </>
-                ) : manualSuccess ? (
-                  <>
-                    <Check className="w-4 h-4 text-[#98CE94]" />
-                    <span>Manual Opened in Drive!</span>
-                  </>
-                ) : (
-                  <>
-                    <FileText className="w-4 h-4 text-[#98CE94]" />
-                    <span>Download Manual (Drive)</span>
-                    <ExternalLink className="w-3.5 h-3.5 ml-0.5 text-white/60" />
-                  </>
-                )}
-              </button>
+                <Download className="w-4 h-4 text-[#183017]" />
+                <span>Download User Manual PDF</span>
+              </a>
 
               <button
                 onClick={() => onOpenModal('manual')}

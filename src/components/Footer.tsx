@@ -1,6 +1,7 @@
 import React from 'react';
 import { ModalType } from '../types';
 import { SmartAttendLogo } from './SmartAttendLogo';
+import { Download } from 'lucide-react';
 
 interface FooterProps {
   onOpenModal: (modal: ModalType) => void;
@@ -68,6 +69,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
                 >
                   User Manual
                 </button>
+              </li>
+              <li>
+                <a
+                  href="assets/usermanual.pdf"
+                  download="usermanual.pdf"
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors text-left cursor-pointer text-[#98CE94]"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  User Manual PDF
+                </a>
               </li>
             </ul>
           </div>

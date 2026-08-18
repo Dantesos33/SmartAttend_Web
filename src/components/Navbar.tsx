@@ -77,6 +77,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               User Manual (v3.0)
             </button>
             <a
+              href="assets/usermanual.pdf"
+              download="usermanual.pdf"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#183017] bg-[#98CE94] hover:bg-[#82BE7D] border border-[#98CE94] rounded-lg transition-all cursor-pointer shadow-2xl"
+            >
+              <Download className="w-3.5 h-3.5 text-[#183017]" />
+              User Manual PDF
+            </a>
+            <a
               href={GOOGLE_DRIVE_APK_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -125,6 +133,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               <BookOpen className="w-4 h-4 text-[#73737C]" />
               User Manual (v3.0)
             </button>
+            <a
+              href="assets/usermanual.pdf"
+              download="usermanual.pdf"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#183017] bg-[#98CE94] hover:bg-[#82BE7D] rounded-lg text-center"
+            >
+              <Download className="w-4 h-4 text-[#183017]" />
+              User Manual PDF
+            </a>
             <a
               href={GOOGLE_DRIVE_APK_URL}
               target="_blank"
